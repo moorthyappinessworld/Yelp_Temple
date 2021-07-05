@@ -1,5 +1,5 @@
 const Review = require('../models/review');
-const Campground = require('../models/campground');
+const Campground = require('../models/temple');
 module.exports.addReview = async(req,res)=>{
     const campground = await Campground.findById(req.params.id);
     const review = new Review(req.body.review);

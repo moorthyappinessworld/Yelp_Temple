@@ -1,0 +1,72 @@
+<% layout('layout/boilerplate') %> 
+<style>
+        img {
+            height: 300px;
+            width: 200px;
+        }
+
+        blink {
+            color: #2d38be;
+            font-size: 15px;
+            font-weight: bold;
+            -webkit-animation: 1s linear infinite condemned_blink_effect;
+            /* for Safari 4.0 - 8.0 */
+            animation: 1s linear infinite condemned_blink_effect;
+        }
+
+        @-webkit-keyframes condemned_blink_effect {
+            0% {
+                visibility: hidden;
+            }
+
+            50% {
+                visibility: hidden;
+            }
+
+            100% {
+                visibility: visible;
+            }
+        }
+</style>
+<div class="card mb-3 card shadow">
+    <div id='cluster-map'></div>
+</div>
+<% if(temples.length===0){ %>
+    <h3 class="text-center text-danger">No Temples here.. Please add Temples</h3><br>
+    <% }else{ %>
+<h1 class="text-center">Temples</h1><br>
+<% for(let temple of temples){ %> 
+<div class="card mb-3 card shadow">
+    <div class="row">
+        <div class="col-md-4 ml-3">
+            <%if(temple.images.length) {%>
+            <img class="img-fluid" src="<%= temple.images[0].imageurl %>" alt="">
+            <% }else {%>
+                <img class="img-fluid"  src="<%= temple.images[0] %>" alt="">
+            <% } %>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-title"><%= temple.title  %></div>
+                <p class="card-text"><%= temple.description  %></p>
+                <p class="card-text"><%= temple.location  %></p>
+                <blink><p class="card-text">Special Ticket $<%= temple.price  %></p></blink>
+                <div class="text-end">
+                    <div class="card-body">
+                        <a class="btn btn-primary" href="/temples/<%=temple._id%>">View Temple </a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% } %> 
+<% } %> 
+<script>
+    const mapToken = '<%=process.env.MAP_BOX_TOKEN%>';
+    const temple = {features:<%- JSON.stringify(temples) %>}
+    </script>
+<script src="/javascripts/templeClusterMap.js">
+
+</script>
+

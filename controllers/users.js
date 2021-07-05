@@ -14,7 +14,7 @@ module.exports.userRegister = async(req,res,next)=>{
         req.login(registeredNewUser,err=>{
             if(err) return next(err);
             req.flash('success','Welcome to Yelp Camp');
-            res.redirect('/campgrounds')
+            res.redirect('/temples')
         })
 
     } catch(e){
@@ -30,12 +30,12 @@ module.exports.userLogin = (req,res)=>{
     console.log(req.body);
     // req.flash('success','Welcome back to Yelp Camp');
     // res.redirect('/campgrounds')
-    const redirectUrl = req.session.returnTo || '/campgrounds';
+    const redirectUrl = req.session.returnTo || '/temples';
     delete req.session.returnTo;
     res.redirect(redirectUrl)
 }
 module.exports.userLogout = (req,res)=>{
     req.logout();
     req.flash('success','Good Bye by Yelp Camp');
-    res.redirect('/campgrounds')
+    res.redirect('/temples')
 }

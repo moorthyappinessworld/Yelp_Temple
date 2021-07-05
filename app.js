@@ -21,14 +21,14 @@ const passport = require('passport');
 const passportLocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 
-const routesCampgrounds = require('./routes/campgrounds');
+const routesCampgrounds = require('./routes/temples');
 const routesReviews = require('./routes/reviews'); 
 const routesUsers = require('./routes/users'); 
 const User = require('./models/user');
 const MongoDBStore = require("connect-mongo")(session);
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/YelpCamp';
-//mongodb://localhost:27017/YelpCamp
+const dbUrl =  'mongodb://localhost:27017/YelpTemple';
+//mongodb://localhost:27017/YelpCamp process.env.DB_URL ||
 mongoose.connect(dbUrl, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
@@ -92,7 +92,9 @@ const styleSrcUrls = [
     "https://api.tiles.mapbox.com/",
     "https://fonts.googleapis.com/",
     "https://use.fontawesome.com/",
-    "http://cdn.jsdelivr.net/"
+    "http://cdn.jsdelivr.net/",
+    "https://unpkg.com/",
+    "https://fonts.gstatic.com/"
 ];
 const connectSrcUrls = [
     "https://api.mapbox.com/",
@@ -103,8 +105,10 @@ const connectSrcUrls = [
 const fontSrcUrls = [];
 app.use(
     helmet.contentSecurityPolicy({
+        useDefaults: true,
         directives: {
-            defaultSrc: [],
+
+            defaultSrc: ["'self'"],
             connectSrc: ["'self'", ...connectSrcUrls],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
@@ -114,7 +118,7 @@ app.use(
                 "'self'",
                 "blob:",
                 "data:",
-                "https://res.cloudinary.com/dvjo2ny5l/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                "https://res.cloudinary.com/dav756m1j/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
                 "https://images.unsplash.com/",
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
@@ -145,8 +149,8 @@ app.get('/fakeUser',async(req,res)=>{
 
 })
 app.use('/',routesUsers);
-app.use('/campgrounds',routesCampgrounds);
-app.use('/campgrounds/:id/reviews',routesReviews);
+app.use('/temples',routesCampgrounds);
+app.use('/temples/:id/reviews',routesReviews);
 //home
 app.get('/',(req,res)=>{
     res.render('home')

@@ -1,39 +1,42 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">YelpCamp</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary bg-gradient">
+  <div class="container-fluid ">
+    <strong><a class="navbar-brand text-light" href="#">YelpTemple</a></strong>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">Home</a>
+          <a class="nav-link text-light" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" aria-current="page" href="/temples">Temples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" aria-current="page" href="/temples/new">New Temple</a>
+        </li>
+      </ul>
+      <div class="navbar-nav">
+        <% if(!currentUser){ %>
+          <li class="nav-item  mr-5">
+            <strong><a class="nav-link text-light" aria-current="page" href="/login">Login</a></strong>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/campgrounds">Campground</a>
+            <strong><a class="nav-link  text-light" aria-current="page"
+                href="/register">Register</a></strong>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/campgrounds/new">New Campground</a>
-          </li>
-        </ul>
-        <div class="navbar-nav ml-auto">
-          <% if(!currentUser){ %> 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/register">Register</a>
-          </li>
-          <% }else{ %> 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/logout">Logout</a>
-          </li>
-          <% } %> 
-        </div>
-        <!--<form class="d-flex">
+          <% }else{ %>
+            <li class="nav-item">
+              <strong><a class="nav-link text-dark btn btn-light" aria-current="page" href="/logout">Logout</a></strong>
+            </li>
+            <% } %>
+      </div>
+      <!--<form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>-->
-      </div>
     </div>
-  </nav>
+  </div>
+</nav>

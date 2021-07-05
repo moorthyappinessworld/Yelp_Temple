@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params:{//storing the images in YelpCamp Folder
-        folder:'YelpCamp',
+        folder:'YelpTemple',
         allowedFormats:['jpeg','png','jpg'] 
     }
 })

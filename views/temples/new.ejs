@@ -1,0 +1,56 @@
+<% layout('layout/boilerplate') %> 
+
+<div class="row ">
+    <h1 class="text-center">New Temple</h1>
+    <div class="col-md-6 offset-md-3 mb-3 card shadow">
+        <form action="/temples" method="POST" novalidate class="needs-validation card-body" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title"><strong>Title</strong></label>
+                <input class="form-control" type="text" id="title" name="temple[title]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location"><strong>Location</strong></label>
+                <input class="form-control" type="text" id="location" name="temple[location]" required>
+            </div>
+            <div class="md-3">
+                <label class="form-label" for="price"><strong>Special Price</strong></label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">&#8377;</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" 
+                    aria-label="price" aria-describedby="price-label" name="temple[price]" required>
+                  </div>
+            </div>
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="decription"><strong>Description</strong></label>
+                <textarea class="form-control" type="text" id="decription" name="temple[description]" required></textarea>
+            </div>
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="contact"><strong>Contact</strong></label>
+                <input class="form-control" type="number" id="contact" name="temple[contact]" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="website"><strong>Website</strong></label>
+                <input class="form-control" type="text" id="website" name="temple[website]" required>
+            </div>
+            <div class="mb-3 card shadow">
+                <div class="mb-3 form-file custom-file card-body">
+                    <label for="image" class="form-label"><strong>Add Images</strong></label>
+                    <input class="form-control" type="file" name="image" id="image" multiple>
+                    <label class="form-file-label" for="image">
+                        <br>
+                        <h6>Images Selected:</h6>
+                        <span class="custom-file-label text-wrap">No file Choosen </span>
+                    </label>
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="center btn btn-success">Add Temple</button>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+

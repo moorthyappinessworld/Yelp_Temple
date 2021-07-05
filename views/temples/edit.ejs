@@ -1,58 +1,61 @@
 <% layout('layout/boilerplate') %>
     <div class="row">
-        <h1 class="text-center">Edit Campground</h1>
+        <h1 class="text-center">Edit Temple</h1>
         <div class="col-md-6 offset-md-3 mb-3">
             <div class="card shadow">
                 <div class="card-body">
-                    <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate
+                    <form action="/temples/<%=temple._id%>?_method=PUT" method="POST" novalidate
                         class="needs-validation" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label class="form-label" for="title">Title</label>
-                            <input class="form-control" type="text" id="title" name="campground[title]"
-                                value="<%=campground.title%>" required>
+                            <label class="form-label" for="title"><strong>Title</strong></label>
+                            <input class="form-control" type="text" id="title" name="temple[title]"
+                                value="<%=temple.title%>" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="location">Location</label>
-                            <input class="form-control" type="text" id="location" name="campground[location]"
-                                value="<%=campground.location%>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="population">Population</label>
-                            <input class="form-control" type="text" id="image" name="campground[population]"
-                                value="<%=campground.population%>" required>
+                            <label class="form-label" for="location"><strong>Location</strong></label>
+                            <input class="form-control" type="text" id="location" name="temple[location]"
+                                value="<%=temple.location%>" required>
                         </div>
                         <div class="md-3">
-                            <label class="form-label" for="price">Price</label>
+                            <label class="form-label" for="price"><strong>Special Price</strong></label>
                             <div class="input-group">
                                 <span class="input-group-text" id="price-label">$
                                     <!--&#8377;-->
                                 </span>
                                 <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                                    aria-describedby="price-label" name="campground[price]"
-                                    value="<%=campground.price%>" required>
+                                    aria-describedby="price-label" name="temple[price]"
+                                    value="<%=temple.price%>" required>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="decription">Description</label>
-                            <textarea class="form-control" type="text" id="decription" name="campground[description]"
-                                required><%=campground.description%></textarea>
+                        <div class="mb-3 mt-3">
+                            <label class="form-label" for="decription"><strong>Description</strong></label>
+                            <textarea class="form-control" type="text" id="decription" name="temple[description]"
+                                required><%=temple.description%></textarea>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="form-label" for="contact"><strong>Contact</strong></label>
+                            <textarea class="form-control" type="number" id="contact" name="temple[contact]" required><%=temple.contact%></textarea>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label class="form-label" for="website"><strong>Website</strong></label>
+                            <textarea class="form-control" type="text" id="website" name="temple[website]" required><%=temple.website%></textarea>
                         </div>
                         <div class="mb-3 card shadow">
                             <div class="mb-3 form-file custom-file card-body">
-                                <label for="image" class="form-label">Add more Images</label>
+                                <label for="image" class="form-label"><strong>Add more Images</strong></label>
                                 <input class="form-control" type="file" name="image" id="image" multiple>
                                 <label class="form-file-label" for="image">
                                     <br>
-                                    <h6>Images Selected:</h6>
+                                    <h6>Images Selected:></h6>
                                     <span class="custom-file-label text-wrap"> </span>
                                 </label>
                             </div>
                         </div>
                         <div class="md-3">
-                            <% campground.images.forEach(function(img, i) { %>
+                            <% temple.images.forEach(function(img, i) { %>
                                 <div class="align-middle">
                                     <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
                                     <div class="form-check-inline">
@@ -64,7 +67,7 @@
                                 <% })%>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto mt-3">
-                            <button class="center btn btn-success">Update Campground</button>
+                            <button class="center btn btn-success">Update Temple</button>
                         </div>
                     </form>
                     <br>

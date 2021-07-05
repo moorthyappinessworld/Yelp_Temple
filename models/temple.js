@@ -11,7 +11,7 @@ ImageSchema.virtual('thumbnail').get(function(){
     return this.imageurl.replace('/upload','/upload/w_300')
 });
 const opts = { toJSON: { virtuals: true } };//virtual in JSON
-const campGroundSchema = new schema({
+const TempleSchema = new schema({
     title:String,
     images:[ImageSchema],
     geometry:{
@@ -28,7 +28,10 @@ const campGroundSchema = new schema({
     price:Number,
     description: String,
     location: String,
-    population:Number,
+    contact: Number,
+    website: String,
+    postdate:String,
+    posttime: String,
     author:{
         type: schema.Types.ObjectId,
         ref: 'User'
@@ -39,12 +42,12 @@ const campGroundSchema = new schema({
     }]
 },opts);
 
-campGroundSchema.virtual('properties.popUpMarkup').get(function(){
-    return `<strong><a href="/campgrounds/${this._id}">${this.title}</a><strong>
+TempleSchema.virtual('properties.popUpMarkup').get(function(){
+    return `<strong><a href="/temples/${this._id}">${this.title}</a><strong>
             <p>${this.description.substring(0,30)}<p>`
 });
-//deleting all reviews whie deleting the Specific Campgroud
-campGroundSchema.post('findOneAndDelete', async function (doc) {
+//deleting all reviews whie deleting the Specific Temple
+TempleSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {
@@ -53,4 +56,4 @@ campGroundSchema.post('findOneAndDelete', async function (doc) {
         })
     }
 })
-module.exports = mongoose.model('Campground',campGroundSchema);
+module.exports = mongoose.model('Temple',TempleSchema);
