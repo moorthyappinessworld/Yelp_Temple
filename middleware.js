@@ -37,27 +37,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-module.exports.checkCampground = (req, res, next) => {
-    const campSchema = Joi.object({
-        campground: Joi.object({
-            title: Joi.string().required().escapeHTML(),//title must required with string data type
-            //image:Joi.string().required(),//image must required with string data type
-            price: Joi.number().required().min(1),//price must required with number data type (min value must be 0)
-            description: Joi.string().required().escapeHTML(),//description must required with string data type
-            location: Joi.string().required().escapeHTML(),//location must required with string data type
-            population: Joi.string().required().escapeHTML(),
-        }).required(),
-        deleteImages: Joi.array()
-    })
-    const { error } = campSchema.validate(req.body);
-    if (error) {
-        const resultMessage = error.details.map(e => e.message).join(',')//getting the details of error message and store into the "resultMessage"
-        throw new expressError(resultMessage, 400)//throwing the resultMessage to the HTTP Request Page.
-    } else {
-        next();
-    }
-    console.log(error);
-}
+
 
 module.exports.checkTemple= (req, res, next) => {
     const templeSchema = Joi.object({
