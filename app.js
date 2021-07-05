@@ -21,7 +21,7 @@ const passport = require('passport');
 const passportLocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 
-const routesCampgrounds = require('./routes/temples');
+const routesTemples = require('./routes/temples');
 const routesReviews = require('./routes/reviews'); 
 const routesUsers = require('./routes/users'); 
 const User = require('./models/user');
@@ -149,7 +149,7 @@ app.get('/fakeUser',async(req,res)=>{
 
 })
 app.use('/',routesUsers);
-app.use('/temples',routesCampgrounds);
+app.use('/temples',routesTemples);
 app.use('/temples/:id/reviews',routesReviews);
 //home
 app.get('/',(req,res)=>{
