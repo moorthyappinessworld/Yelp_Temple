@@ -139,8 +139,6 @@ app.use((req,res,next)=>{
     res.locals.error = req.flash('error');
     next();
 })
-//output
-//{"_id":"60d2032aa9428b43d0aab8c1","email":"fakeuser@ggmail.com","username":"fakeuser","salt":"e79ee51081c48227b5a8174a15aa49cd0b213b80063675882e48f50a2eee9b70","hash":"5bcc1bd1e33a571e3e471b3129f855fa595256410efb4396be8b8f99becb2d85046d46f5ce34650990550cfbdc7a4e4c0087f7eb47c6cf0b2d08954cc007b0978786e313cae7c431e177547b9ae6f0e22c7771521f997084488caad28af4a8e7b7107fcce43ead0b14e6dbadee4c2e909e91b40ea0131f52b9b79f0c2218ef88d15f23ecb237aa71db60b1a26db04df6b90a13d0103b31302f79cb22c772c4aa05661be14cfe6f8a1d45d271a841f9e0f6110cfcd96c7c9b86c0aee82e46636b83ac5e9baf0c470f6439b59627b60c440b117efbbe369ad8b865781605847fab1942027703dfc55e35cac3287a6cf0b29a470b18b804874c13f44d6bba1ede5de3173f568696a4af4d54f2e184c99b748246c1ac65b0db2e33d5f5219f150bc07bce2097ad4fae8cfcd79fdf3be9aa9ca66f5e3ad78279cb1a89ab6a7f165f135bc8e421ac0cc5a68e665e8bbf53c0bf7e65e3f091923f3ae0dc80d800bd282f9fec195071748c31a8edd22376eb6f7f72a973ae685d188a652432c129ac47de0b01b1ab7e8eec6b66fc06def2737fa8ef2fb3724d444bd9616b2f9cafd938741705cfa5d9d2f10a7ed8e088f365071dac89b89dee786fcd135296fc2c168079943c00e906164629e956b11f07419358b550eca116fae400facb31a5ffec42265034992ebea1ec6059c4ca28e394a2050f7700db5feafd14774fc24ec6dc014c","__v":0}
 
 app.get('/fakeUser',async(req,res)=>{
     const fakeUser = new User({email:'fakeuser@ggmail.com',username:'fakeuser'});
@@ -155,14 +153,6 @@ app.use('/temples/:id/reviews',routesReviews);
 app.get('/',(req,res)=>{
     res.render('home')
 })
-
-
-// app.get('/makecamp',errorAsync(async(req,res)=>{
-//     const makeCamp = new Campground({title: 'My Camp',description:'Very cheap camping!'})//Checing the data will be storing in the database
-//     await makeCamp.save();//saving to the database
-//     res.send(makeCamp);//sending the data to http request page
-// }))
-//
 
 
 app.all('*',(req,res,next)=>{
