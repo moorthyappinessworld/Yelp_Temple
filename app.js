@@ -27,8 +27,8 @@ const routesUsers = require('./routes/users');
 const User = require('./models/user');
 const MongoDBStore = require("connect-mongo")(session);
 
-const dbUrl =  'mongodb://localhost:27017/YelpTemple';
-//mongodb://localhost:27017/YelpCamp process.env.DB_URL ||
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/YelpTemple';
+//mongodb://localhost:27017/YelpCamp 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true, 
     useUnifiedTopology: true,
